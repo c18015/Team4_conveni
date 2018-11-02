@@ -2,29 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BigSpiderController : MonoBehaviour {
+public class Sensing : MonoBehaviour
+{
 
+    // Use this for initialization
+    void Start()
+    {
 
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("プレイヤーおいしー^^　");
+            Debug.Log("感知圏内にプレイヤーが入りました。");
 
             //Destroy(this.gameObject);
         }
     }
 }
-
-
