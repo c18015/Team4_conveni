@@ -16,7 +16,8 @@ public class RootCon : MonoBehaviour {
 
     private float startTime;
     private Vector3 startPosition;
-    public GameObject OO;
+    
+    
 
     void OnEnable()
     {
@@ -25,6 +26,8 @@ public class RootCon : MonoBehaviour {
             transform.position = endPosition;
             enabled = false;
             return;
+
+            
         }
 
         startTime = Time.timeSinceLevelLoad;
@@ -33,11 +36,14 @@ public class RootCon : MonoBehaviour {
 
     void Start () {
 
-    
-	}
+        LookEDP();
+        
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
+
 
         var diff = Time.timeSinceLevelLoad - startTime;
         if (diff > time)
@@ -63,19 +69,31 @@ public class RootCon : MonoBehaviour {
         {
             enabled = false;
         }
-        else
+       
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
         {
             enabled = true;
+            LookEDP();
+
+           /* Debug.Log("出たで^^");*/
         }
     }
 
-            void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
 #if UNITY_EDITOR
 
         if (!UnityEditor.EditorApplication.isPlaying || enabled == false)
         {
             startPosition = transform.position;
+        }
+        else
+        {
+            enabled = true;
         }
 
         UnityEditor.Handles.Label(endPosition, endPosition.ToString());
@@ -85,5 +103,11 @@ public class RootCon : MonoBehaviour {
         Gizmos.DrawSphere(startPosition, 0.1f);
 
         Gizmos.DrawLine(startPosition, endPosition);
+    }
+
+    void LookEDP()
+    {
+        var vec = (endPosition - this.transform.position).normalized;
+        this.transform.rotation = Quaternion.FromToRotation(Vector3.up, vec);
     }
 }
