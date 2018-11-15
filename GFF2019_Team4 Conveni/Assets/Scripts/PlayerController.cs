@@ -19,7 +19,14 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        if(Input.GetKeyDown("z"))
+        {
+            moveForce = 0; 
+        }
+        if(Input.GetKeyUp("z"))
+        {
+            moveForce = 60; 
+        }
         Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertical")) * moveForce;
         bool isSneaking = CrossPlatformInputManager.GetButton("Sneak");
         //Debug.Log(isSneaking ? SneakMultiplier : 1);
