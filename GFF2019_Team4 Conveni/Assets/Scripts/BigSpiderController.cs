@@ -6,7 +6,7 @@ public class BigSpiderController : MonoBehaviour
 {
     public GameObject player;
     public float MoveSpeed = 1;
-    
+    public int count = 150;
 
 
     void Start()
@@ -32,8 +32,8 @@ public class BigSpiderController : MonoBehaviour
             PlayerLook();
 
 
-            int SPC = Random.Range(0, 150);   //SpiderCount、略してSPC,決してサメを殴る団体ではありません。
-            if (SPC == 5)
+            int SPC = Random.Range (0, count );   //SpiderCount、略してSPC,決してサメを殴る団体ではありません。
+            if (SPC == 10)
             {
                 speedUP();
             }
