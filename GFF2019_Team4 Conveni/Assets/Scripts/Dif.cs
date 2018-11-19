@@ -13,8 +13,8 @@ public class Dif : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        ShotPos = GameObject.Find("Shot");
-        BasePos = GameObject.Find("Player");
+        ShotPos = GameObject.FindGameObjectWithTag("Shot");
+        BasePos = GameObject.FindGameObjectWithTag("Player");
 
         targetPos = ShotPos.transform.position;
         basePos = BasePos.transform.position;
