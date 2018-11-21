@@ -21,18 +21,21 @@ public class LightGauge_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        countTime -= Time.deltaTime;
-
-
-        
-        if (countTime > Light_meter.maxValue)
+        if (Input.GetKey("z"))
         {
-            countTime = Light_meter.maxValue;
-
+            countTime += Time.deltaTime;
         }
+        else
+        {
+            countTime -= Time.deltaTime;
 
-        Light_meter.value = countTime; 
+            if (countTime > Light_meter.maxValue)
+            {
+                countTime = Light_meter.maxValue;
+            }
 
+            Light_meter.value = countTime;
+        }
     }
 }
 
