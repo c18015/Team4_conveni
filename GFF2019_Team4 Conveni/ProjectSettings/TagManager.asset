@@ -7,6 +7,7 @@ TagManager:
   - Item
   - Shot
   - targetTag
+  - Friend
   layers:
   - Default
   - TransparentFX
