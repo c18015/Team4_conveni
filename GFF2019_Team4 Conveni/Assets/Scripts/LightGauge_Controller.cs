@@ -24,6 +24,8 @@ public class LightGauge_Controller : MonoBehaviour
         if (Input.GetKey("z"))
         {
             countTime += Time.deltaTime;
+
+            Light_meter.value = countTime;
         }
         else
         {
