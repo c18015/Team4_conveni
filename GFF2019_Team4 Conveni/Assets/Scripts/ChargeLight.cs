@@ -4,23 +4,36 @@ using UnityEngine;
 
 public class ChargeLight : MonoBehaviour {
 
-
-    const float GravityCon = 9.81f;
-
-    public float gravityScale = 1.0f;
+    public int Energy = 1;
+    public LightGauge_Controller LGC;
 
     void Start()
     {
-       
-        
+
+
+
     }
 
-	void Update () {
+    void Update() {
 
         Vector3 vector = new Vector3();
 
+        vector.x = Input.GetAxis("Horizontal");
+
+
+        if (vector.x != 0)
+        {
+            LGC.AddplusE1(Energy);
+        }
 
 
 
-	}
+
+
+
+        Debug.Log(vector.x);
+     
+
+    }
+
 }

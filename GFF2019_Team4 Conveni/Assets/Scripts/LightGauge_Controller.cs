@@ -5,35 +5,42 @@ using UnityEngine.UI;
 
 public class LightGauge_Controller : MonoBehaviour
 {
-    public float countTime;
-    Slider Light_meter;
+    
+    Slider Light_Slider;
 
     // Use this for initialization
     void Start()
     {
 
-        Light_meter = GameObject.Find("Light Gauge").GetComponent<Slider>();
+        Light_Slider = GameObject.Find("Light Gauge").GetComponent<Slider>();
 
     }
 
-    
-
+    float countTime = 600;
+   
     // Update is called once per frame
     void Update()
     {
-        countTime -= Time.deltaTime;
 
+        countTime -= 0.1f;
 
-        
-        if (countTime > Light_meter.maxValue)
+        if (countTime > 601)
         {
-            countTime = Light_meter.maxValue;
-
+            countTime = 600;
         }
 
-        Light_meter.value = countTime; 
+
+
+        Light_Slider.value = countTime;       
 
     }
+
+    public void AddplusE1(int amount)
+    {
+        countTime += amount;
+    }
+
+
 }
 
 
