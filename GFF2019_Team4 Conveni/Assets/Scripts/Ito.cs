@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(TouchInput))]
 public class Ito : MonoBehaviour
 {
 
     bool Isarea = false;
+    public TouchInput touchInput;
 
     // Use this for initialization
     void Start()
@@ -39,10 +41,23 @@ public class Ito : MonoBehaviour
             {
                 if (Isarea)
                 {
-                    this.gameObject.SetActive(false);
-                    Isarea = false;
+                    Vector2 tapPosition = touchInput.Position;
+                    tapPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    Collider2D collider2D = Physics2D.OverlapPoint(tapPosition);
 
-                    Debug.Log("いと切れた…？");
+                    Debug.Log(tapPosition);
+
+                    if (collider2D)
+                    {
+                        RaycastHit2D hitObject = Physics2D.Raycast(tapPosition, Vector2.up);
+                        if (hitObject.collider.gameObject.tag == "Friend")
+                        {
+                            hitObject.collider.gameObject.SetActive(false);
+                            Debug.Log("いと切れた！");
+                        }
+                    }
+                    //this.gameObject.SetActive(false);
+                    Isarea = false;
                 }
             };
         }

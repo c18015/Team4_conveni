@@ -95,7 +95,8 @@ public class TouchInput : MonoBehaviour {
         }
     }
 
-    private Vector2 Position
+    //↓元はprivateだった
+    public Vector2 Position
     {
         get
         {
