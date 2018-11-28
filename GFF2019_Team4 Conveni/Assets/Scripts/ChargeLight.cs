@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChargeLight : MonoBehaviour {
+public class ChargeLight : MonoBehaviour { //発電システムのスクリプト、携帯を横に傾けると発電してくれるはず(未デバッグ)
 
-    public int Energy = 1;
-    public LightGauge_Controller LGC;
+    public int Energy = 1;　//発電ゲージにプラスする数
+    public LightGauge_Controller LGC; //数字を送るスプリクト
 
     void Start()
     {
@@ -21,9 +21,12 @@ public class ChargeLight : MonoBehaviour {
         vector.x = Input.GetAxis("Horizontal");
 
 
-        if (vector.x != 0)
+        //０より大きくなるとその度に発電ゲージにさっきの数をプラスする。携帯を少しでも傾くと０より大きくなるガバガバシステム　　いつか修正したい。
+        if (vector.x != 0)　
         {
-            LGC.AddplusE1(Energy);
+
+            //AddでLightGauge_Controllerのスクリプトに送る
+            LGC.AddplusE1(Energy);　
         }
 
 
@@ -31,7 +34,7 @@ public class ChargeLight : MonoBehaviour {
 
 
 
-        Debug.Log(vector.x);
+       // Debug.Log(vector.x); 
      
 
     }

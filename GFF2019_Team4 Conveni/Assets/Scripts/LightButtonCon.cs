@@ -2,30 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightButtonCon : MonoBehaviour {
+public class LightButtonCon : MonoBehaviour {  //発電画面をボタンで表示、非表示するスクリプト
 
     public GameObject hatudenGUI;
 
 
 
-    // Use this for initialization
-    void Start () {
-
-        
+   
+    void Start () {        
     }
-	
-	// Update is called once per frame
 	void Update () {
-
 	}
 
 
+    //ボタンを押すとHatuden_ screenを表示する
     public void LightGuiON()
     {
         hatudenGUI.SetActive(true);
 
     }
 
+    //ボタンを押すとHatuden_ screenを非表示にする
     public void LightGuiOFF()
     {
         hatudenGUI.SetActive(false);

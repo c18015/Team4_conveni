@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RootCon : MonoBehaviour {
+public class RootCon : MonoBehaviour {　//蜘蛛が感知範囲にプレイヤーが入るとそっちを向く+決められたポイントへまっすぐ向かう　スプリクト
+
 
 
     [SerializeField, Range(0, 100)]
-    float time = 1;
+    float time = 1;　//スタートから決められたポイントまでの移動時間
 
     [SerializeField]
     Vector3 endPosition;
@@ -36,6 +37,7 @@ public class RootCon : MonoBehaviour {
 
     void Start () {
 
+
         LookEDP();
         
 
@@ -63,6 +65,8 @@ public class RootCon : MonoBehaviour {
 
     }
 
+
+
     void OnTriggerStay2D(Collider2D other)　//プレイヤーがコライダー(感知範囲)に入ったかを判断
     {
         if (other.gameObject.tag == "Player")
@@ -72,6 +76,7 @@ public class RootCon : MonoBehaviour {
        
     }
 
+    //感知範囲を出るとプレイヤーを諦め、また決められたポイントに向かって進み始める
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -83,6 +88,8 @@ public class RootCon : MonoBehaviour {
         }
     }
 
+
+    //決めたポイントに向かって進む　　サイトから参考してきた。　　なるほどね完全に理解したわ(全くわかってない)
     void OnDrawGizmosSelected()
     {
 #if UNITY_EDITOR
@@ -105,6 +112,8 @@ public class RootCon : MonoBehaviour {
         Gizmos.DrawLine(startPosition, endPosition);
     }
 
+
+    //プレイヤーの方を向く
     void LookEDP()
     {
         var vec = (endPosition - this.transform.position).normalized;
