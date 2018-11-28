@@ -30,7 +30,14 @@ public class Spider : MonoBehaviour {　　//クモさんを管理するスク�
             //Debug.Log("感知圏内にプレイヤーが入りました。");
 
             PlayerLook();
+        }
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            transform.Translate(0, -2, 0);
         }
     }
 
@@ -43,4 +50,6 @@ public class Spider : MonoBehaviour {　　//クモさんを管理するスク�
         transform.Translate(0, 1 * MoveSpeed2 * Time.deltaTime, 0);
     }
 
+
+    
 }
