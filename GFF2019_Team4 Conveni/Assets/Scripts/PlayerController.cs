@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
+[RequireComponent(typeof(PlayerMortionController))]
 public class PlayerController : MonoBehaviour
 {  //プレイヤーのすべてがここにある。　マグロ、撮影開始　
 
@@ -17,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip DamageSE;
     private AudioSource audioSource;
 
+    private PlayerMortionController m_PlayerA;
+
+
     // Use this for initialization
     void Start()
     {
@@ -24,6 +28,8 @@ public class PlayerController : MonoBehaviour
         myBody = this.GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
 
+
+        m_PlayerA = GetComponent<PlayerMortionController>();
     }
 
 
@@ -39,6 +45,14 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(isSneaking ? SneakMultiplier : 1);
 
         myBody.AddForce(moveVec * (isSneaking ? SneakMultiplier : 1));
+
+
+        float h = CrossPlatformInputManager.GetAxis("Horizontal");
+        float v = CrossPlatformInputManager.GetAxis("Vertical");
+
+
+        m_PlayerA.Move(h, v);
+
     }
 
 
