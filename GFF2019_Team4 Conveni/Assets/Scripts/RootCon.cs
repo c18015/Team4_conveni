@@ -17,6 +17,7 @@ public class RootCon : MonoBehaviour {　//蜘蛛が感知範囲にプレイヤ�
 
     private float startTime;
     private Vector3 startPosition;
+    public Spider SSC;
     
     
 
@@ -37,9 +38,11 @@ public class RootCon : MonoBehaviour {　//蜘蛛が感知範囲にプレイヤ�
 
     void Start () {
 
+        SSC = GetComponent<Spider>();
 
         LookEDP();
         
+
 
     }
 	
@@ -84,7 +87,7 @@ public class RootCon : MonoBehaviour {　//蜘蛛が感知範囲にプレイヤ�
             enabled = true;
             LookEDP();
 
-           /* Debug.Log("出たで^^");*/
+            SSC.AniOFF();
         }
     }
 

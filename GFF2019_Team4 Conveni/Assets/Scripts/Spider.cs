@@ -6,20 +6,20 @@ public class Spider : MonoBehaviour {　　//クモさんを管理するスク�
 
     public GameObject player;
     public float MoveSpeed2;　//クモさんの移動速度
-
+    Animator anim;
 
 
     // Use this for initialization
     void Start () {
 
-   
+        anim = this.gameObject.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+	
 	}
 
     //プレイヤーがコライダー(感知範囲)に入ったら PlayerLook()をする
@@ -29,7 +29,11 @@ public class Spider : MonoBehaviour {　　//クモさんを管理するスク�
         {
             //Debug.Log("感知圏内にプレイヤーが入りました。");
 
+            anim.Play("Spider_AT");
+
             PlayerLook();
+
+           
         }
     }
 
@@ -48,8 +52,13 @@ public class Spider : MonoBehaviour {　　//クモさんを管理するスク�
         this.transform.rotation = Quaternion.FromToRotation(Vector3.up, vec);
 
         transform.Translate(0, 1 * MoveSpeed2 * Time.deltaTime, 0);
+
+
     }
 
-
+    public void AniOFF()
+    {
+        anim.Play("idol");
+    }
     
 }
