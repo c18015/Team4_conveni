@@ -3,20 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class PlayerController : MonoBehaviour {
+[RequireComponent(typeof(PlayerMortionController))]
+public class PlayerController : MonoBehaviour
+{  //プレイヤーのすべてがここにある。　マグロ、撮影開始　
 
     public float moveForce = 5, SneakMultiplier = 1;
     Rigidbody2D myBody;
+    public float PlayerHP = 3;
+
+    public float falseTimer = 0.5f;
+
+    public DM_Effect DMFX;
+
+    public AudioClip DamageSE;
+    private AudioSource audioSource;
+
+    private PlayerMortionController m_PlayerA;
+
 
     // Use this for initialization
     void Start()
     {
 
         myBody = this.GetComponent<Rigidbody2D>();
+        audioSource = gameObject.GetComponent<AudioSource>();
 
+
+        m_PlayerA = GetComponent<PlayerMortionController>();
     }
 
-    // Update is called once per frame
+
+
+
+
+    //動画を参考にしたため全くわからん()　知らない関数多すぎぃ！！
     void FixedUpdate()
     {
 
@@ -25,5 +45,35 @@ public class PlayerController : MonoBehaviour {
         //Debug.Log(isSneaking ? SneakMultiplier : 1);
 
         myBody.AddForce(moveVec * (isSneaking ? SneakMultiplier : 1));
+
+
+        float h = CrossPlatformInputManager.GetAxis("Horizontal");
+        float v = CrossPlatformInputManager.GetAxis("Vertical");
+
+
+        m_PlayerA.Move(h, v);
+
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "SpiderDMH")
+        {
+            DMFX.AddEffectON();
+
+            audioSource.PlayOneShot(DamageSE);
+
+        }
     }
 }
+
+   
+/*    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "SpiderDMH")
+        {
+            Debug.Log("強烈な物理的ダメージ");
+        }
+
+    }*/
