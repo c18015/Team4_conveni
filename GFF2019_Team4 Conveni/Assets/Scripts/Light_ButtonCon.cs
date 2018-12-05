@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightButtonCon : MonoBehaviour {  //発電画面をボタンで表示、非表示するスクリプト
+public class Light_ButtonCon : MonoBehaviour {  //発電画面をボタンで表示、非表示するスクリプト
 
     public GameObject hatudenGUI;
 

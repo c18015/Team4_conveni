@@ -2108,7 +2108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa2bd63a3e37cc4086554e54e81acd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hatudenGUI: {fileID: 0}
+  hatudenGUI: {fileID: 965937840}
 --- !u!1 &664377069
 GameObject:
   m_ObjectHideFlags: 0
