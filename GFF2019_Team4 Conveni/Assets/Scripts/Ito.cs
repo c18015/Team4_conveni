@@ -13,21 +13,18 @@ public class Ito : MonoBehaviour
 
     RaycastHit2D hitObject;
 
-    bool Iscount;
-    
-
-    //private int count;
+    bool Iscount; 
 
     // Use this for initialization
     void Start()
     {
-        //Iscount = count.Iscount;
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(count.Iscount);
+        //Debug.Log(count.Iscount);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -41,19 +38,14 @@ public class Ito : MonoBehaviour
                 );
 
             Debug.Log("蜘蛛出現！");
-            
-        }
-        //Isarea = true;
-
-        //Debug.Log("入ったよ－！");
+            count.Iscount = false;
+        }        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         Isarea = true;
-        //Debug.Log("入ってまーす!");
-        //Debug.Log(Isarea);
-
+        
         if (collision.gameObject.tag == "Player")
         {
             TouchInput.Started += info =>
@@ -68,16 +60,9 @@ public class Ito : MonoBehaviour
                     {
                         RaycastHit2D hitObject = Physics2D.Raycast(tapPosition, Vector2.up);
                         if (hitObject.collider.gameObject.tag == "Friend")
-                        {
+                        {                          
+                            hitObject.collider.gameObject.SetActive(false);                                                        
                             
-
-                            hitObject.collider.gameObject.SetActive(false);
-                                                        
-                            //Debug.Log("いと切れた！");    
-                            if (hitObject.collider.gameObject == false)
-                            {
-                                
-                            }
                         }
                         
                     }
@@ -90,7 +75,6 @@ public class Ito : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //Debug.Log("出たよー！");
         Isarea = false;
     }
 }

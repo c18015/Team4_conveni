@@ -1,32 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Count : MonoBehaviour {
 
-    GameObject[] tagObjects;
-    public bool Iscount = false;
+    private GameObject[] tagObjects;
+    private int i = 0;
+    private int count;
 
-    //float timer = 0.0f;
-    //float interval = 2.0f;
+    public bool Iscount = false;
+    //public GameObject scoretxt;
+    //public Text scoreText;
+
+    float timer = 0.0f;
+    float interval = 1.0f;
 
 	// Use this for initialization
 	void Start () {
-      
+        //scoreText = scoretxt.GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        /*timer += Time.deltaTime;
+        timer += Time.deltaTime;
 
         if(timer > interval)
         {
             Check("Friend");
 
             timer = 0;
-        }*/
+        }
 
-        Check("Friend");
+        //scoreText.text = "nokori : " + tagObjects.Length;
+        //Check("Friend");
 	}
 
     void Check(string tagname)
@@ -34,9 +41,11 @@ public class Count : MonoBehaviour {
         tagObjects = GameObject.FindGameObjectsWithTag(tagname);
 
         Debug.Log(tagObjects.Length);
-        if(tagObjects.Length == 3)
+
+        if(tagObjects.Length == 3 && i == 0)
         {
             Iscount = true;
+            i = 1;
             //Debug.Log(Iscount);
         }
 
