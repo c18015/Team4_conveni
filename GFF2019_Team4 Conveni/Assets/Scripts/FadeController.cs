@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class FadeController : MonoBehaviour {
 
-    float fadeInSpeed = 0.000275f;
-    float fadeOutSpeed = 0.000275f;        //透明度が変わるスピードを管理
+    float fadeInSpeed = 0.000222f;
+    float fadeOutSpeed = 0.000222f;        //透明度が変わるスピードを管理
     float red, green, blue, alpha;   //パネルの色、不透明度を管理
     public bool isFadeOut = false;  //フェードアウト処理の開始、完了を管理するフラグ
     public bool isFadeIn = false;   //フェードイン処理の開始、完了を管理するフラグ
@@ -41,8 +41,12 @@ public class FadeController : MonoBehaviour {
         SetAlpha();                      //b)変更した不透明度パネルに反映する
         if (alpha <= 0)
         {                    //c)完全に透明になったら処理を抜ける
-            isFadeIn = false;
+            fadeInSpeed = 0;
             fadeImage.enabled = false;    //d)パネルの表示をオフにする
+        }
+        else
+        {
+            fadeInSpeed = 0.000222f;
         }
     }
 
@@ -51,9 +55,13 @@ public class FadeController : MonoBehaviour {
         fadeImage.enabled = true;  // a)パネルの表示をオンにする
         alpha += fadeOutSpeed;         // b)不透明度を徐々にあげる
         SetAlpha();               // c)変更した透明度をパネルに反映する
-        if (alpha >= 1)
+        if (alpha >= 0.8)
         {             // d)完全に不透明になったら処理を抜ける
-            isFadeOut = false;
+            fadeOutSpeed = 0;
+        }
+        else
+        {
+            fadeOutSpeed = 0.000222f;
         }
     }
 
