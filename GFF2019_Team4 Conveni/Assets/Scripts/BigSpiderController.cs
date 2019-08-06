@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BigSpiderController : MonoBehaviour
+public class BigSpiderController : MonoBehaviour　//本ゲーム最強の大グモちゃんの管理するスプリクト
 {
     public GameObject player;
     public float MoveSpeed = 1;
-    
+    public int count = 150;
 
 
     void Start()
@@ -27,13 +27,13 @@ public class BigSpiderController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("感知圏内にプレイヤーが入りました。");
+            //Debug.Log("感知圏内にプレイヤーが入りました。");
 
             PlayerLook();
 
 
-            int SPC = Random.Range(0, 150);   //SpiderCount、略してSPC,決してサメを殴る団体ではありません。
-            if (SPC == 5)
+            int SPC = Random.Range (0, count );   //ランダム関数で　1/count の確率でspeedUP()します。　たまにプレイヤー絶対殺すマンになる(修正の予定なし)
+            if (SPC == 10)
             {
                 speedUP();
             }
@@ -54,9 +54,9 @@ public class BigSpiderController : MonoBehaviour
       
     }
 
-
+    　//名前の通り　一瞬だけスピードします。　ジャンプしてるみたいで可愛い
     void speedUP() 
     {
-        transform.Translate(0, 3 ,0);
+        transform.Translate(0, 2 ,0);
     }
 }
